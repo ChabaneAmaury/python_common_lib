@@ -1,5 +1,5 @@
 /.idea/common_libs.iml
-/memory_profiler.py
+/common_libs/memory_profiler.py
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/inspectionProfiles/profiles_settings.xml
@@ -8,3 +8,4 @@
 /.idea/vcs.xml
 /.idea/workspace.xml
 .idea
+/common_libs/memory_profiler.py
