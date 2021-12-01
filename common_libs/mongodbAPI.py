@@ -7,10 +7,12 @@ class MongodbAPI:
         This class contains every tools we need to interact with the mongoDB server.
         """
         self.client = MongoClient(client, port)
+        self.db = None
+        self.collection = None
         if db is not None:
-            self.db = self.client[db]
+            self.setDB(db)
         if db is not None and collection is not None:
-            self.collection = self.db[collection]
+            self.setCollection(collection)
 
     def setDB(self, db):
         """
@@ -28,7 +30,11 @@ class MongodbAPI:
         :param collection: (str) The collection's name
         :return: None
         """
-        self.collection = self.db[collection]
+
+        if collection in self.db.list_collection_names():
+            self.collection = self.db[collection]
+        else:
+            self.collection = self.createCollection(collection)
 
     def insertData(self, data, collection, drop=False):
         """
@@ -56,6 +62,7 @@ class MongodbAPI:
         """
         self.db.create_collection(collection,
                                   storageEngine={'wiredTiger': {'configString': 'block_compressor=zstd'}})
+        return self.db[collection]
 
     def findAllData(self, collection, limit: int = 0):
         """
