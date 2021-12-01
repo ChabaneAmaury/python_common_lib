@@ -7,8 +7,10 @@ class MongodbAPI:
         This class contains every tools we need to interact with the mongoDB server.
         """
         self.client = MongoClient(client, port)
-        self.db = self.client[db]
-        self.collection = self.db[collection]
+        if db is not None:
+            self.db = self.client[db]
+        if db is not None and collection is not None:
+            self.collection = self.db[collection]
 
     def setDB(self, db):
         """
