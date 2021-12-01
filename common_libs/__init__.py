@@ -1,4 +1,4 @@
-from .mongodbAPI import mongodbAPI
+from .mongodbAPI import MongodbAPI
 from .graph import graph
 from .shortestPath import shortestPath
 from .priorityQueue import *
