@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 
-class mongodbAPI:
+class MongodbAPI:
     def __init__(self, client='localhost', port=27017, db=None, collection=None):
         """
         This class contains every tools we need to interact with the mongoDB server.
